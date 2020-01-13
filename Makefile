@@ -40,5 +40,5 @@ create_layer: clean_layer
 					/usr/lib/swift/linux/libswiftDispatch.so \
 					/usr/lib/swift/linux/libswiftGlibc.so \
 					/usr/lib/swift/linux/libswiftSwiftOnoneSupport.so
-	zip -r tmp/swift-lambda-layer.zip tmp/lib
+	cd ./tmp; zip -r swift-lambda-layer.zip lib -x ".DS_Store"
 	
