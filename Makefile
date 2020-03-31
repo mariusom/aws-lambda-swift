@@ -1,13 +1,13 @@
 SHELL := /bin/bash
 
-VERSION ?= 0.2.1
-SWIFT_VERSION ?= 5.1.3
+VERSION ?= 5.2.0
+SWIFT_VERSION ?= 5.2
 REPO ?= mariusomdev/aws-lambda-swift
 TAG ?= "$(REPO):$(VERSION)-swift-$(SWIFT_VERSION)"
 
 assets:
 	@test -s tmp/swift-package-$(SWIFT_VERSION).tar.gz || \
-		curl -o tmp/swift-package-$(SWIFT_VERSION).tar.gz https://amazonlinux-swift.s3.eu-central-1.amazonaws.com/releases/swift-5.1.3-RELEASE-amazonlinux2.tar.gz
+		curl -o tmp/swift-package-$(SWIFT_VERSION).tar.gz https://amazonlinux-swift.s3.eu-central-1.amazonaws.com/releases/swift-$(SWIFT_VERSION)-RELEASE-amazonlinux2.tar.gz
 
 build: assets
 	@docker build --build-arg SWIFT_VERSION=$(SWIFT_VERSION) -t $(TAG) .
