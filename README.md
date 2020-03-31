@@ -2,7 +2,7 @@
 
 Used to generate docker image and aws lambda layer to be used with serverless-swift
 
-Prerequisites
+## Prerequisites
 
 - Docker
 - Make
