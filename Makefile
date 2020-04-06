@@ -1,6 +1,6 @@
 SHELL := /bin/bash
 
-VERSION ?= 5.2.0
+VERSION ?= 0.2.1
 SWIFT_VERSION ?= 5.2
 REPO ?= mariusomdev/aws-lambda-swift
 TAG ?= "$(REPO):$(VERSION)-swift-$(SWIFT_VERSION)"
