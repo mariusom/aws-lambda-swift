@@ -2,6 +2,11 @@ FROM swiftlang/swift:nightly-amazonlinux2
 
 RUN yum -y update && \
   yum -y install \
+  libatomic \
+  gcc \ 
+  gcc-c++ \ 
+  make \ 
+  zlib-devel \
   git \
   libuuid-devel \
   libicu-devel \

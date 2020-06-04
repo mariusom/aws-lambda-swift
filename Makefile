@@ -1,6 +1,6 @@
 SHELL := /bin/bash
 
-VERSION ?= 1.0.0
+VERSION ?= 1.0.1
 SWIFT_VERSION ?= 5.3-dev
 REPO ?= mariusomdev/aws-lambda-swift
 
