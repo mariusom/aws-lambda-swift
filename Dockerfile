@@ -16,6 +16,7 @@ RUN yum -y update && \
   python-devel \
   ncurses-devel \
   curl-devel \
+  libssl-dev \
   openssl-devel \
   tzdata \
   libtool \
