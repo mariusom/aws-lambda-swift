@@ -1,7 +1,20 @@
-FROM amazonlinux:2
+FROM swiftlang/swift:nightly-amazonlinux2
 
 RUN yum -y update && \
-  yum -y install libatomic libedit gcc gcc-c++ make zlib-devel git zip openssl-devel
-
-ARG SWIFT_VERSION
-ADD ./tmp/swift-package-$SWIFT_VERSION.tar.gz /
+  yum -y install \
+  git \
+  libuuid-devel \
+  libicu-devel \
+  libedit-devel \
+  libxml2-devel \
+  sqlite-devel \
+  python-devel \
+  ncurses-devel \
+  curl-devel \
+  openssl-devel \
+  tzdata \
+  libtool \
+  jq \
+  tar \
+  zip \
+  perf

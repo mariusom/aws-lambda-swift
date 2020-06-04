@@ -1,16 +1,13 @@
 SHELL := /bin/bash
 
-VERSION ?= 0.2.2
-SWIFT_VERSION ?= 5.2
+VERSION ?= 1.0.0
+SWIFT_VERSION ?= 5.3-dev
 REPO ?= mariusomdev/aws-lambda-swift
+
 TAG ?= "$(REPO):$(VERSION)-swift-$(SWIFT_VERSION)"
 
-assets:
-	@test -s tmp/swift-package-$(SWIFT_VERSION).tar.gz || \
-		curl -o tmp/swift-package-$(SWIFT_VERSION).tar.gz https://amazonlinux-swift.s3.eu-central-1.amazonaws.com/releases/swift-$(SWIFT_VERSION)-RELEASE-amazonlinux2.tar.gz
-
-build: assets
-	@docker build --build-arg SWIFT_VERSION=$(SWIFT_VERSION) -t $(TAG) .
+build:
+	@docker build -t $(TAG) .
 	@docker tag $(TAG) $(REPO):latest
 	@docker tag $(TAG) $(REPO):latest-swift-$(SWIFT_VERSION)
 
@@ -27,7 +24,6 @@ create_layer: clean_layer
 	docker run --rm --volume "$(shell pwd)/:/src" --workdir "/src" \
 			$(TAG) \
 			cp -t tmp/lib \
-					/usr/lib64/libatomic.so.1 \
 					/usr/lib/swift/linux/libBlocksRuntime.so \
 					/usr/lib/swift/linux/libFoundation.so \
 					/usr/lib/swift/linux/libFoundationNetworking.so \
@@ -39,6 +35,7 @@ create_layer: clean_layer
 					/usr/lib/swift/linux/libswiftCore.so \
 					/usr/lib/swift/linux/libswiftDispatch.so \
 					/usr/lib/swift/linux/libswiftGlibc.so \
+					/usr/lib64/libatomic.so.1 \
 					/usr/lib/swift/linux/libswiftSwiftOnoneSupport.so
 	cd ./tmp; zip -r swift-lambda-layer.zip lib -x ".DS_Store"
 	
