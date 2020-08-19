@@ -1,4 +1,4 @@
-FROM swiftlang/swift:nightly-amazonlinux2
+FROM swift:5.2.5-amazonlinux2
 
 RUN yum -y update && \
   yum -y install \
