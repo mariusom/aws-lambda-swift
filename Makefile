@@ -1,10 +1,9 @@
 SHELL := /bin/bash
 
-VERSION ?= 1.0.2
-SWIFT_VERSION ?= 5.3-dev
+SWIFT_VERSION ?= 5.2.5
 REPO ?= mariusomdev/aws-lambda-swift
 
-TAG ?= "$(REPO):$(VERSION)-swift-$(SWIFT_VERSION)"
+TAG ?= "$(REPO):swift-$(SWIFT_VERSION)"
 
 build:
 	@docker build -t $(TAG) .
